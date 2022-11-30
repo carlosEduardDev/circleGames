@@ -13,10 +13,6 @@
   --preto: rgb(0, 0, 0);
 }
 
-body {
-  background-color: #f7f7f7;
-}
-
 @keyframes rodar {
   100% {
     transform: rotate(360deg);
@@ -30,6 +26,25 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes exp {
+  0% {
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes itensInvisible {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    margin-right: 30px;
   }
 }
 
@@ -49,7 +64,8 @@ body {
 #home img {
   width: 150px;
   filter: invert(100%);
-  animation: rodar ease-in 20s infinite;
+  animation: rodar ease-in 20s infinite, fade 1s 0.2s ease forwards;
+  opacity: 0;
 }
 
 .filter {
@@ -59,24 +75,19 @@ body {
   position: absolute;
 }
 
-#home div {
-  animation: fade 1s 0.5s ease forwards;
-  display: flex;
-  opacity: 0;
-  align-items: center;
-  gap: 50px;
-}
-
 #home h1 {
+  animation: fade 1s 0.5s ease forwards;
   font-size: 50px;
   color: var(--branco);
   margin-right: 10px;
+  z-index: 2;
+  opacity: 0;
 }
 
 #home h2 {
   color: var(--branco);
   opacity: 0;
-  animation: fade 1s 1s forwards;
+  animation: fade 1s 0.8s forwards;
   font-size: 30px;
 }
 
@@ -130,7 +141,7 @@ header.ativo {
 
 #menuBotao span::after,
 #menuBotao span::before {
-  transition: 0.5s;
+  transition: 0.3s;
   content: "";
   width: 24px;
   height: 2px;
@@ -178,7 +189,6 @@ header ul {
   list-style-type: none;
   font-size: 18px;
   color: var(--branco);
-  animation: fade 1s forwards;
   gap: 20px;
 }
 a {
@@ -191,16 +201,6 @@ a:hover {
   color: var(--vermelho);
   font-weight: bold;
   border-bottom: 1px solid var(--vermelho);
-}
-
-@keyframes itensInvisible {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    margin-right: 30px;
-  }
 }
 
 .js-scroll {
@@ -312,17 +312,15 @@ a:hover {
   justify-content: center;
   align-content: center;
   z-index: 0 !important;
-  background-image: url("img/gow.png");
+  background-image: url("img/gow.jpg");
   background-repeat: no-repeat;
-  background-position-y: calc(100% + 145px);
   background-size: cover;
   background-attachment: fixed;
 }
 
 #lancamento.gow {
-  background-image: url("img/gow.png");
+  background-image: url("img/gow.jpg");
   background-repeat: no-repeat;
-  background-position-y: calc(100% + 145px);
   background-size: cover;
   background-attachment: fixed;
   transition: 0.5s;
@@ -332,7 +330,6 @@ a:hover {
   background-image: url("img/gta5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: calc(100% + 145px);
   transition: 0.5s;
   background-attachment: fixed;
 }
@@ -343,7 +340,6 @@ a:hover {
   background-size: cover;
   background-attachment: fixed;
   transition: 0.5s;
-  background-position-y: calc(100% + 145px);
 }
 
 .js-img {
@@ -361,6 +357,7 @@ a:hover {
   text-shadow: var(--preto) 3px 3px 5px;
   color: var(--branco);
   font-weight: bold;
+  transition: 0.5s;
 }
 
 #lancamento .filter {
@@ -372,6 +369,7 @@ a:hover {
     "titulo titulo titulo titulo"
     "img img img button"
     "p p p  button";
+  transition: 0.5s;
 }
 
 #lancamento p:first-child {
@@ -424,7 +422,8 @@ button:nth-child(3) {
 }
 
 #faq {
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 #faq h1 {
@@ -447,13 +446,13 @@ button:nth-child(3) {
 }
 
 #faq h2::after {
-  content: "⮯";
+  content: "↑";
   margin-left: 5px;
   transition: 0.5s;
 }
 
 #faq h2.ativo::after {
-  content: "⮭";
+  content: "↓";
   transition: 0.5s;
 }
 
@@ -511,6 +510,14 @@ footer img:hover {
   filter: invert(80%);
 }
 
+#home,
+#oque-é-o-circle,
+#lancamento,
+#faq {
+  min-height: 100vh;
+  height: auto;
+}
+
 @media (max-width: 900px) {
   header {
     padding: 10px 35px;
@@ -519,7 +526,7 @@ footer img:hover {
     font-size: 14px;
   }
   header .logo {
-    font-size: 20px;
+    font-size: 25px;
   }
   header.ativo {
     top: 0;
@@ -576,6 +583,7 @@ footer img:hover {
 
   #lancamento {
     background-position-y: 100%;
+    transition: 0.5s;
   }
 
   #lancamento.gow,
@@ -641,6 +649,10 @@ footer img:hover {
 }
 
 @media (max-width: 600px) {
+  * {
+    scroll-padding-top: 80px;
+  }
+
   #menuBotao {
     display: block;
     margin-right: 20px;
@@ -651,30 +663,48 @@ footer img:hover {
 
   header {
     padding: 20px;
+    background-color: rgba(0, 0, 0, 0.99);
+    height: 70px;
   }
   header ul {
     display: none;
   }
 
   header ul.expandir {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    top: 50px;
+    top: 70px;
     padding: 10px;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.99);
     width: 100%;
     height: 100vh;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
+    overflow: auto;
   }
 
   header ul.expandir li {
-    margin: 40px;
+    margin: 50px;
+    opacity: 0;
+  }
+
+  header ul.expandir li:nth-child(1) {
+    animation: exp 0.5s forwards;
+  }
+  header ul.expandir li:nth-child(2) {
+    animation: exp 0.5s 0.1s forwards;
+  }
+  header ul.expandir li:nth-child(3) {
+    animation: exp 0.5s 0.2s forwards;
+  }
+  header ul.expandir li:nth-child(4) {
+    animation: exp 0.5s 0.3s forwards;
   }
 
   #home {
-    background-position: -250px;
+    background-position: 300px;
   }
   #home img {
     width: 60px;
@@ -808,11 +838,51 @@ footer img:hover {
   footer img {
     width: 40px;
   }
+
+  #lancamento,
+  #lancamento.gow,
+  #lancamento.unc,
+  #lancamento.gta {
+    background-color: var(--preto);
+    background-position-y: 70px;
+    background-position-x: 0px;
+    background-size: 100% 35vh;
+    background-attachment: local;
+  }
+
+  #lancamento .filter {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  #lancamento.gta .js-img {
+    width: 160px;
+    margin-top: 25vh;
+  }
+
+  .js-img {
+    width: 280px;
+    margin-top: 28vh;
+    align-self: center;
+  }
+
+  .js-text {
+    margin-top: 5vh;
+    font-size: 17px !important;
+    color: var(--branco);
+    text-shadow: none;
+    text-align: center !important;
+    align-self: center;
+  }
+
+  #botoes {
+    position: absolute;
+    top: 60vh;
+  }
 }
 
 @media (max-width: 430px) {
   #faq h1 {
-    font-size: 1.7em;
+    font-size: 23px;
   }
 
   #faq h2,
@@ -822,173 +892,12 @@ footer img:hover {
   }
 
   #faq h2 {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   #faq p {
-    font-size: 12px;
-  }
-
-  footer p {
-    font-size: 18px;
-  }
-
-  footer img {
-    width: 40px;
-  }
-
-  #home {
-    background-position: -250px;
-  }
-  #home img {
-    width: 50px;
-  }
-  #home h1 {
-    font-size: 24px;
-  }
-  #home h2 {
-    font-size: 18px;
-  }
-
-  #oque-é-o-circle {
-    height: auto !important;
-  }
-  #oque-é-o-circle h1 {
-    color: var(--preto);
-    margin: 50px 0px;
-    text-align: center;
-    font-size: 1.2em;
-  }
-  #oque-é-o-circle p {
-    text-align: center;
-    color: var(--preto);
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 50px;
-  }
-
-  .cartoes {
-    display: grid;
-  }
-  .cards img {
-    width: 60px;
-  }
-  .cards p {
-    font-size: 16px;
-  }
-  .cards {
-    padding: 0;
-    padding-top: 10px;
-    margin: 0;
-  }
-
-  #lancamento {
-    background-position-y: 100%;
-    background-position-x: -420px;
-  }
-
-  #lancamento.gow,
-  #lancamento.unc,
-  #lancamento.gta {
-    background-position-y: calc(100% + 40px);
-  }
-
-  #lancamento.gta .js-img {
-    width: 160px;
-  }
-
-  .js-img {
-    width: 280px;
-  }
-
-  .js-text {
-    font-size: 17px !important;
-  }
-
-  button {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-@media (max-width: 300px) {
-  #home h1 {
-    font-size: 16px;
-  }
-  #home h2 {
-    font-size: 14px;
-  }
-
-  #oque-é-o-circle h1 {
-    margin: 35px 0px;
-    font-size: 1.1em;
-  }
-  #oque-é-o-circle p {
-    font-size: 14px;
-    margin-bottom: 50px;
-  }
-
-  .cards img {
-    width: 50px;
-  }
-  .cards p {
-    font-size: 13px;
-  }
-  .cards {
-    padding: 0;
-    padding-top: 10px;
-    margin: 0;
-  }
-
-  #lancamento {
-    background-position-x: -400px;
-  }
-
-  #lancamento.gow,
-  #lancamento.unc,
-  #lancamento.gta {
-    background-position-y: calc(100% + 40px);
-  }
-
-  #lancamento.gta .js-img {
-    width: 130px;
-  }
-
-  .js-img {
-    width: 220px;
-  }
-
-  .js-text {
-    font-size: 16px !important;
-  }
-
-  #lancamento p:first-child {
-    font-size: 13px;
-  }
-
-  button {
-    width: 70px;
-    height: 70px;
-  }
-
-  #botoes {
-    margin-top: 30px;
-  }
-
-  .titulo {
-    height: 20px;
-  }
-
-  #faq h1 {
-    font-size: 1em;
-  }
-
-  #faq h2 {
-    font-size: 13px;
-  }
-
-  #faq p {
-    font-size: 9px;
+    font-size: 15px;
+    margin-left: 0;
   }
 
   footer p {
@@ -996,6 +905,113 @@ footer img:hover {
   }
 
   footer img {
-    width: 20px;
+    width: 30px;
+  }
+
+  #home {
+    background-position: -300px;
+  }
+  #home img {
+    width: 110px;
+  }
+  #home h1 {
+    font-size: 30px;
+  }
+  #home h2 {
+    font-size: 20px;
+  }
+
+  #oque-é-o-circle {
+    height: auto !important;
+  }
+  #oque-é-o-circle h1 {
+    color: var(--preto);
+    margin: 50px 0px 0px 0px !important;
+    text-align: center;
+    font-size: 25px;
+  }
+  #oque-é-o-circle p {
+    text-align: left;
+    color: var(--preto);
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 30px;
+    padding: 30px;
+  }
+
+  .cartoes {
+    display: grid;
+  }
+  .cards img {
+    width: 60px;
+    margin: 0;
+    padding-top: 10px;
+  }
+  .cards p {
+    font-size: 15px;
+    text-align: center !important;
+  }
+  .cards {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0px;
+  }
+
+  .titulo {
+    display: none;
+  }
+
+  #lancamento,
+  #lancamento.gow,
+  #lancamento.unc,
+  #lancamento.gta {
+    background-color: #090909;
+    background-position-y: 70px;
+    background-position-x: 0px;
+    background-size: 100% 30vh;
+    background-attachment: local;
+  }
+
+  #lancamento .filter {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  #lancamento.gta .js-img {
+    width: 160px;
+    margin-top: 35vh;
+  }
+
+  .js-img {
+    width: 280px;
+    margin-top: 37vh;
+    align-self: center;
+  }
+
+  #lancamento.gta .js-text {
+    margin-top: -2rem;
+  }
+
+  .js-text {
+    margin-top: -1rem;
+    font-size: 17px !important;
+    color: var(--branco);
+    text-shadow: none;
+    text-align: center !important;
+    align-self: center;
+    transition: none;
+  }
+
+  #botoes {
+    position: absolute;
+    top: 60vh;
+  }
+
+  button {
+    width: 80px;
+    height: 80px;
+  }
+
+  a {
+    border-bottom: 0.5px solid var(--vermelho);
   }
 }

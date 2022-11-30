@@ -16,7 +16,7 @@ function scrollSessoes(event) {
   const topo = section.offsetTop;
   section.scrollIntoView({
     behavior: "smooth",
-    block: "end",
+    block: "start",
   });
   cabecalho.querySelector("ul").classList.remove("expandir");
   botaoMenu.classList.remove("ativo");
@@ -40,7 +40,7 @@ function setarjogos(event) {
     sessaoLancamento.classList.remove("unc");
     sessaoLancamento.classList.add("gta");
     textoJogo.innerHTML =
-      "Entre na pele de Michael, Franklin e Trevor  <br> na vida de ladrões de bancos!";
+      "Entre na pele de Michael, Franklin e Trevor <br> na vida de ladrões de bancos!";
     imgJogo.src = "img/logoGta.png";
     imgJogo.setAttribute("width", "300px");
   } else if (event.currentTarget === botoesJogos[2]) {
@@ -48,7 +48,7 @@ function setarjogos(event) {
     sessaoLancamento.classList.remove("gta");
     sessaoLancamento.classList.add("unc");
     textoJogo.innerHTML =
-      "Encare as aventuras de um explorador de tesouros <br> chamado Nathan Drake!";
+      "Encare as aventuras do explorador de <br> tesouros Nathan Drake !";
     imgJogo.src = "img/logoUnc.png";
     imgJogo.setAttribute("width", "600px");
   } else {
