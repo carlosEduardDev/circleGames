@@ -1,13 +1,14 @@
 const cabecalho = document.querySelector("header");
-const links = document.querySelectorAll("a");
 const itensScroll = document.querySelectorAll(".js-scroll");
 const botoesJogos = document.querySelectorAll(".js-button");
 const faq = document.querySelector("#faq");
 const faqH2 = document.querySelectorAll("#faq h2");
 const setaBotao = document.querySelector("#seta");
 const botaoMenu = document.querySelector("#menuBotao");
+const distanciaSessoes = document.querySelectorAll(".js-sessao");
 let textoJogo = document.querySelector(".js-text");
 let imgJogo = document.querySelector(".js-img");
+let links = document.querySelectorAll("a");
 
 function scrollSessoes(event) {
   event.preventDefault();
@@ -92,12 +93,57 @@ function mostrarMenu() {
   botaoMenu.classList.toggle("ativo");
 }
 
+function menuStatus() {
+  let topHome = distanciaSessoes[0].offsetTop,
+    topCircle = distanciaSessoes[1].offsetTop,
+    topJogos = distanciaSessoes[2].offsetTop,
+    topFaq = distanciaSessoes[3].offsetTop;
+
+  links.forEach((link) => {
+    link.classList.remove("status");
+  });
+
+  if (
+    window.scrollY <= topHome ||
+    window.scrollY <= topHome + topCircle / 1.5
+  ) {
+    links[0].classList.add("status");
+  } else if (
+    window.scrollY > topHome + topCircle / 1.5 &&
+    window.scrollY < topCircle + topJogos / 4
+  ) {
+    links[0].classList.remove("status");
+    links[1].classList.add("status");
+  } else if (
+    window.scrollY > topCircle + topJogos / 4 &&
+    window.scrollY < topJogos + topFaq / 4
+  ) {
+    links[1].classList.remove("status");
+    links[2].classList.add("status");
+  } else if (window.scrollY > topJogos) {
+    links[2].classList.remove("status");
+    links[3].classList.add("status");
+  }
+}
+
+menuStatus();
+
+// function paddingSessao(event) {
+//   if (event.currentTarget === links[1]) {
+//     document.querySelector("*").style.scrollPaddingTop = "200px";
+//   } else {
+//     document.querySelector("*").style.scrollPaddingTop = "0";
+//   }
+// }
+
 window.addEventListener("scroll", esconderMenu);
+window.addEventListener("scroll", menuStatus);
 window.addEventListener("scroll", exibirSessoes);
 setaBotao.addEventListener("click", expandirMenu);
 botaoMenu.addEventListener("click", mostrarMenu);
 links.forEach((link) => {
   link.addEventListener("click", scrollSessoes);
+  // link.addEventListener("click", paddingSessao);
 });
 botoesJogos.forEach((botao) => {
   botao.addEventListener("click", setarjogos);

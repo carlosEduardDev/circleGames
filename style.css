@@ -7,6 +7,11 @@
   scroll-behavior: smooth;
 }
 
+.status{
+  color: var(--vermelho);
+  font-weight: bold !important;
+}
+
 :root {
   --vermelho: rgb(255, 59, 59);
   --branco: rgb(255, 255, 255);
@@ -29,13 +34,13 @@
   }
 }
 
-@keyframes exp {
-  0% {
-    margin-left: -10px;
-  }
-  100% {
-    opacity: 1;
-  }
+@keyframes exp{
+    0%{
+        margin-left: -10px;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
 @keyframes itensInvisible {
@@ -64,7 +69,7 @@
 #home img {
   width: 150px;
   filter: invert(100%);
-  animation: rodar ease-in 20s infinite, fade 1s 0.2s ease forwards;
+  animation: rodar ease-in 20s infinite, fade 1s .2s ease forwards;
   opacity: 0;
 }
 
@@ -87,7 +92,7 @@
 #home h2 {
   color: var(--branco);
   opacity: 0;
-  animation: fade 1s 0.8s forwards;
+  animation: fade 1s .8s forwards;
   font-size: 30px;
 }
 
@@ -194,7 +199,7 @@ header ul {
 a {
   color: currentColor;
   text-decoration: none;
-  transition: 0.5s;
+  transition: 0.5s; 
 }
 
 a:hover {
@@ -228,7 +233,7 @@ a:hover {
 
 #oque-é-o-circle h1 {
   color: var(--preto);
-  margin: 70px 0px;
+  margin: 30px 0px;
   text-align: center;
   font-size: 2em;
 }
@@ -269,9 +274,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(250, 250, 250, 0.7);
   border-radius: 4px;
-  box-shadow: 2px 2px 5px rgb(56, 50, 50);
 }
 
 .ativo .cards:nth-child(1) {
@@ -291,7 +294,8 @@ a:hover {
 
 .cards img {
   width: 120px;
-}
+  filter: invert(67%) sepia(85%) saturate(5892%) hue-rotate(336deg) brightness(98%) contrast(106%);
+  }
 
 .cards p {
   font-size: 20px;
@@ -299,8 +303,7 @@ a:hover {
 }
 
 .cards:hover {
-  transform: scale(1.03);
-  background-color: var(--branco);
+  transform: scale(1.02);
 }
 
 #lancamento {
@@ -344,7 +347,7 @@ a:hover {
 
 .js-img {
   grid-area: img;
-  padding: 30px;
+  padding: 30px;    
 }
 
 .js-text {
@@ -357,7 +360,7 @@ a:hover {
   text-shadow: var(--preto) 3px 3px 5px;
   color: var(--branco);
   font-weight: bold;
-  transition: 0.5s;
+  transition: .5s;
 }
 
 #lancamento .filter {
@@ -369,7 +372,7 @@ a:hover {
     "titulo titulo titulo titulo"
     "img img img button"
     "p p p  button";
-  transition: 0.5s;
+  transition: .5s;
 }
 
 #lancamento p:first-child {
@@ -510,12 +513,9 @@ footer img:hover {
   filter: invert(80%);
 }
 
-#home,
-#oque-é-o-circle,
-#lancamento,
-#faq {
-  min-height: 100vh;
-  height: auto;
+#home, #oque-é-o-circle, #lancamento, #faq{
+    min-height: 100vh;
+    height: auto;
 }
 
 @media (max-width: 900px) {
@@ -583,7 +583,7 @@ footer img:hover {
 
   #lancamento {
     background-position-y: 100%;
-    transition: 0.5s;
+    transition: .5s;
   }
 
   #lancamento.gow,
@@ -627,7 +627,7 @@ footer img:hover {
 
   #faq h2,
   #faq p {
-    padding-left: 30px;
+    padding:0px 30px;
     margin-bottom: 20px;
   }
 
@@ -649,9 +649,10 @@ footer img:hover {
 }
 
 @media (max-width: 600px) {
-  * {
-    scroll-padding-top: 80px;
-  }
+
+   *{
+       scroll-padding-top: 60px;
+   }
 
   #menuBotao {
     display: block;
@@ -674,33 +675,34 @@ footer img:hover {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 70px;
+    top: 70px;    
     padding: 10px;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.99);
+    background-color: rgba(0, 0, 0, .99);
     width: 100%;
     height: 100vh;
     font-size: 20px;
     text-align: center;
     overflow: auto;
   }
+  
+  header ul.expandir li:nth-child(1){
+    margin-top: 50px;
+  }
 
   header ul.expandir li {
-    margin: 50px;
+    margin: 25px;
     opacity: 0;
   }
-
-  header ul.expandir li:nth-child(1) {
-    animation: exp 0.5s forwards;
-  }
-  header ul.expandir li:nth-child(2) {
-    animation: exp 0.5s 0.1s forwards;
-  }
-  header ul.expandir li:nth-child(3) {
-    animation: exp 0.5s 0.2s forwards;
-  }
-  header ul.expandir li:nth-child(4) {
-    animation: exp 0.5s 0.3s forwards;
+  
+  header ul.expandir li:nth-child(1){
+      animation: exp .5s forwards;
+  }header ul.expandir li:nth-child(2){
+      animation: exp .5s .1s forwards;
+  }header ul.expandir li:nth-child(3){
+      animation: exp .5s .2s forwards;
+  }header ul.expandir li:nth-child(4){
+      animation: exp .5s .3s forwards;
   }
 
   #home {
@@ -838,8 +840,8 @@ footer img:hover {
   footer img {
     width: 40px;
   }
-
-  #lancamento,
+  
+   #lancamento,
   #lancamento.gow,
   #lancamento.unc,
   #lancamento.gta {
@@ -849,9 +851,9 @@ footer img:hover {
     background-size: 100% 35vh;
     background-attachment: local;
   }
-
-  #lancamento .filter {
-    background: rgba(0, 0, 0, 0);
+  
+  #lancamento .filter{
+      background: rgba(0,0,0,.0);
   }
 
   #lancamento.gta .js-img {
@@ -868,15 +870,15 @@ footer img:hover {
   .js-text {
     margin-top: 5vh;
     font-size: 17px !important;
-    color: var(--branco);
+    color:var(--branco);
     text-shadow: none;
     text-align: center !important;
     align-self: center;
   }
-
-  #botoes {
-    position: absolute;
-    top: 60vh;
+  
+  #botoes{
+      position: absolute;
+      top:60vh;
   }
 }
 
@@ -909,7 +911,7 @@ footer img:hover {
   }
 
   #home {
-    background-position: -300px;
+    background-position: -300px;        
   }
   #home img {
     width: 110px;
@@ -954,11 +956,11 @@ footer img:hover {
   .cards {
     padding: 0 !important;
     margin: 0 !important;
-    gap: 0px;
+    gap:0px;
   }
-
+  
   .titulo {
-    display: none;
+      display: none;
   }
 
   #lancamento,
@@ -971,9 +973,9 @@ footer img:hover {
     background-size: 100% 30vh;
     background-attachment: local;
   }
-
-  #lancamento .filter {
-    background: rgba(0, 0, 0, 0);
+  
+  #lancamento .filter{
+      background: rgba(0,0,0,0);
   }
 
   #lancamento.gta .js-img {
@@ -986,32 +988,31 @@ footer img:hover {
     margin-top: 37vh;
     align-self: center;
   }
-
-  #lancamento.gta .js-text {
-    margin-top: -2rem;
+  
+  #lancamento.gta .js-text{
+      margin-top: -2rem;
   }
 
   .js-text {
     margin-top: -1rem;
     font-size: 17px !important;
-    color: var(--branco);
+    color:var(--branco);
     text-shadow: none;
     text-align: center !important;
     align-self: center;
     transition: none;
   }
-
-  #botoes {
-    position: absolute;
-    top: 60vh;
+  
+  #botoes{
+      position: absolute;
+      top:60vh;
   }
 
   button {
     width: 80px;
     height: 80px;
   }
-
-  a {
-    border-bottom: 0.5px solid var(--vermelho);
-  }
+  
+  
 }
+
