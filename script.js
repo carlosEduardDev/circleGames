@@ -128,14 +128,6 @@ function menuStatus() {
 
 menuStatus();
 
-// function paddingSessao(event) {
-//   if (event.currentTarget === links[1]) {
-//     document.querySelector("*").style.scrollPaddingTop = "200px";
-//   } else {
-//     document.querySelector("*").style.scrollPaddingTop = "0";
-//   }
-// }
-
 window.addEventListener("scroll", esconderMenu);
 window.addEventListener("scroll", menuStatus);
 window.addEventListener("scroll", exibirSessoes);
@@ -143,7 +135,6 @@ setaBotao.addEventListener("click", expandirMenu);
 botaoMenu.addEventListener("click", mostrarMenu);
 links.forEach((link) => {
   link.addEventListener("click", scrollSessoes);
-  // link.addEventListener("click", paddingSessao);
 });
 botoesJogos.forEach((botao) => {
   botao.addEventListener("click", setarjogos);
