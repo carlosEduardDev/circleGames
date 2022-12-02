@@ -203,9 +203,12 @@ a {
 }
 
 a:hover {
-  color: var(--vermelho);
-  font-weight: bold;
-  border-bottom: 1px solid var(--vermelho);
+  border-bottom: 1px solid var(--branco);
+}
+
+a.status:hover{
+  border-bottom: none;
+  cursor: default;
 }
 
 .js-scroll {
