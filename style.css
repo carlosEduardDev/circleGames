@@ -472,7 +472,7 @@ button:nth-child(3) {
 
 @keyframes fadeLeft {
   0% {
-    padding-left: 26px;
+    margin-bottom: -26px;
     opacity: 0;
   }
 }
