@@ -8,7 +8,7 @@ const botaoMenu = document.querySelector("#menuBotao");
 const distanciaSessoes = document.querySelectorAll(".js-sessao");
 let textoJogo = document.querySelector(".js-text");
 let imgJogo = document.querySelector(".js-img");
-let links = document.querySelectorAll("a");
+let links = document.querySelectorAll("ul a");
 
 function scrollSessoes(event) {
   event.preventDefault();

@@ -516,6 +516,10 @@ footer img:hover {
   filter: invert(80%);
 }
 
+footer a:hover{
+  border:none;
+}
+
 #home, #oque-é-o-circle, #lancamento, #faq{
     min-height: 100vh;
     height: auto;
