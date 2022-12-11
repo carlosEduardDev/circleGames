@@ -77,7 +77,6 @@ function exibirSessoes() {
       const sectionTop = item.getBoundingClientRect().top;
       let isSectionVisible = sectionTop - windowMetade < 0;
       if (isSectionVisible) item.classList.add("ativo");
-      else item.classList.remove("ativo");
     });
   }
 }
